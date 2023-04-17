@@ -1,0 +1,45 @@
++++ HTTP --> TCP / UDP +++
+
+--> Packet
+--> There are 5 basic layers in the structure of every packet
++ Application layer --> HTTP, FTP --> Data --> Chunk
++ Transport layer --> TCP/UDP --> data segments, datagrams --> create Packet (wired + wireless)
++ Network layer --> IP --> Packet
++ Data Link layer --> Ethernet, Wifi --> Frame (wired)
++ Physical layer --> Cables
+
+--> Packet consists header, payload, layers,...
+
+--> Physical layer --> Information about communication medium: cables,...
+
+--> Data Link layer --> Responsible for maintaining the link between the two devices \
+sending and receiving the packet
+--> Wired networks, Data Link layer refers to Ethernet
++ Ethernet is a set of standards for transmitting data over a physical link,...
+--> Wireless networks, Data Link layer refers to Wifi
+
+*** Point to note
+--> Application --> Data, chunk
+--> Transport --> Segment (dest: port,...)
+--> Network --> Packet (IP Address)
+--> Data Link --> Frame (MAC address)
+--> Physical
+
+HTTP uses TCP because TCP is reliable (for example we need data transmitted in order)
+
++++ How the Internet works - TCP and UDP +++
+
+TCP connection
+HTTP Request -->
+<-- HTTP Response
+
+--> After each HTTP request --> the HTTP connection closes, so does the TCP connection
+--> The main way to keep the TCP connection open is Websockets (socket.io)
+
+--> HTTP --> HTML, images, mp4,...
++ Efficient --> HTTP is only connected when required
++ Stateless --> No dialogue
+
+--> HTTP message --> Start line + Header + Body
+
+curl -v google.com

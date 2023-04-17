@@ -1,0 +1,24 @@
++++ Course Housekeeping - How I do NodeJS +++
+
++++ Node/HTTP servers 101 +++
+
+--> Mime-type --> Media type or Content type
++ A label that identifies the format of a file: "text/html", "iamge/jpeg",...
++ Are used HTTP headers
+
+--> Response HTTP message
+1. Start-line --> Supported by default
+2. Header --> Status code, mime-type,...
+3. Body
+
+curl -v 127.0.0.1:3000
+
++++ Serving up routes and static files in plain Node +++
+
+--> fs module --> file system module
+--> gives access to file system
+--> Security risk?
+--> No security risk because fs gives access to the server not the web page \
+sending request to the server
+
+--> buffer --> allows data to be read and written in chunks
