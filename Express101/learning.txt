@@ -22,3 +22,39 @@ curl -v 127.0.0.1:3000
 sending request to the server
 
 --> buffer --> allows data to be read and written in chunks
+
++++ What is Express +++
+
++++ Express The basics +++
+
+--> Express --> 3rd party module
+
+app.all('*' < route >, < callback >)
+
++++ Basic Routing +++
+
+--> Routing --> How Express Application responds to a particular endpoint \
+and a specific HTTP request method
++ Endpoint (URI or path)
++ HTTP request method (GET, POST,...)
+
+--> HTTP resquest methods --> CRUD
++ GET --> READ
++ POST --> CREATE
++ PUT --> UPDATE
++ DELETE --> DELETE
+
+--> app.all
+
++++ Serving Static Files +++
+
+--> express.static(root, [options])
+--> Built-in middleware --> Serves static files
++ based on serve-static
+
+--> app.static('public') --> http://127.0.0.1:3000/nodejs.png
+
+--> res.sendFile(< dirname >)
+--> security (static will public files)
+
+*** express.static API reference, serve-static
