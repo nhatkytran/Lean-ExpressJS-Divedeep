@@ -1,0 +1,24 @@
+{
+  "name": "express201",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect appUse.js",
+    "helmet": "nodemon --inspect helmetAndOthers.js",
+    "render": "nodemon --inspect rendering.js",
+    "ejs": "nodemon --inspect ejsPractice.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "helmet": "^6.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

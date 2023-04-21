@@ -1,0 +1,104 @@
++++ Middleware +++
+
+--> Express --> Router + Middleware
+
+--> req --- [Middleware] --> res
+
+res.locals --> [Object: null prototype] { data: 'Data' }
+
+app.locals --> top-level data --> persist through the life of the application
+--> req.app.locals
+
+--> app.use(< path >, < middleware >) --> All methods
+--> Run on single method like this
++ app.get(< path >, < middleware >)
++ app.get(< path >, < middleware >)
+
+*** Point to note
+--> app.use --> matches path and the beginning of the current URL
++ with app.get --> only exact path gets executed
+--> app.all --> matches exactly path of the current URL
+
++++ Express helmet and other Express middlewares +++
+
+--> Helmet --> Secure App by setting various HTTP headers
+
+--> CSP --> Content-Security-Policy (CSP) --> https://www.veracode.com/blog/secure-development/fasten-your-helmetjs-part-2-locking-down-your-content-security-policy
+
++++ Responding with JSON +++
+
++++ Time for a Review +++
+
+--> Networking --> HTTP and TCP/UDP
++ Stateless
++ Connectionless
++ Flexible
+
+--> HTTP message
++ Start line
+- req: GET /path HTTP/1.1
+- re: HTTP/1.1 200 OK
++ Headers
+- Key-value pairsa
+- Mime-type: text/html, text/json,...
+--- Blank line ---
++ Body
+- Data
+
+--> Middleware --> Any function that has access to req, res and next
+---
+functiona(req, res, next) {}
+---
+
+--> express.json() & express.urlencoded() --> body parser
+
++++ Choose weapon - API or Server side rendering +++
+
+--> OS (Linux, Window,...)
+--> Web server (NodeJS, Nginx,...)
+--> Database (MySQL, MongoDB,...)
+--> Programming Language (JavaScript, Python,...)
+--> FE (ReactJS, VueJS,...)
+
+--> Server side rendering --> Sends HTML, CSS, JS again and again
+--> API --> HTML, CSS, JS on first request and after that using JSON
+
+--> Server side rendering --> res.render()
+--> API --> res.json()
+
++++ A view engine +++
+
+--> Specify the views directory --> app.set('views', < path >)
+--> Register the template engine --> app.set('view engine, < name >)
+
+--> app.render(< filename >, < data object >)
+
+--> Express uses the node module for our specified view engine \
+and parses the file
+
++++ EJS +++
+
+<% for (let i = 0; i < 10; i++) { %>
+  <h1>Hello</h1>
+<% } %>
+
+<%= value %>
+
+<% for (let i=0; i < 10; i++) { %>
+    <% let txt; %>
+    <% if (i % 2===0) { txt='even' %>
+    <% } else { txt='odd' } %>
+    <h1>Hello <%= i %> - <%= txt %></h1>
+<% } %>
+
+res.render(< fileName >, < options >)
+
+<%= message %> | <%= locals.message %>
+<%= `Hello ${locals.message}` %>
+
+<%- include('index')%>
+<%- html %> --> html: <h1>Hello</h1>
+
++++ Handlebars +++
+
++++ Pug/Jade +++
