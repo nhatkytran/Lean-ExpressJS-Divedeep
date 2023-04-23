@@ -1,0 +1,81 @@
++++ Getting data from the request objects - forms and cookies +++
+
+--> PRG pattern --> Post Redirect Get pattern
+--> res.redirect(303, < path >)
+
+--> app.use(cookie-parser(< secret >))
+--> res.cookie({ signed: true })
+--> req.signedCookies
+
+--> req.secure --> check: req.protocol === 'https'
+--> req.headers['x-forwarded-proto'] --> proxy server
+Client [https] --> Proxy Server [HTTP] --> Server [eq.headers['x-forwarded-proto'] = 'https']
+
+--> app.use(compression())
+--> compress the response body and set `Content-Encoding` header \
+so that the client know the response body is compressed
+
+--> app.enable('trust proxy')
+
++++ Getting data from the query string +++
+
+--> The "?" is a special character in a URL
++ Every after is query string
+--> The query string is where you put insecure data
+
++++ Getting data from params (URL wildcards) - req.params and app.param() +++
+
+--> app.param(< name >, (req, res, next, value) => {})
+--> router.param(< name >, (req, res, next, value) => {})
+
++++ Sending files, and headers already sent +++
+
+--> res.sendFile(< path >)
+--> render directly in the browser
+
+--> res.download(< path >) --> res.sendFile() + `content-disposition -> attachment`
+---
+res.attachment()
+// Content-Disposition: attachment
+res.attachment('path/to/logo.png')
+// Content-Disposition: attachment; filename="logo.png"
+// Content-Type: image/png
+---
+res.set('Content-Disposition', attachment)
+res.sendFile
+---
+res.download('/report-12345.pdf', 'report.pdf', function (err) {
+  if (err) {
+    // Handle error, but keep in mind the response may be partially-sent
+    // so check res.headersSent
+    if (!res.headerSent) redirect(< route >);
+  } else {
+    // decrement a download credit, etc.
+  }
+})
+
++++ The Router +++
+
++++ The Express Generator +++
+
++++ HTTP headers +++
+
+res.json
+res.render
+res.send
+res.sendFile
+res.download
+res.redirect
+
+--> NOT send a webpage, json, file, etc.
+--> SEND HTTP message
++ start line
++ headers
++ blank line
++ body
+
+--> Rules are what make up the Protocol
+--> HTTP message --> follows rules of HTTP protocol
+--> HTTP message --> instance of HTTP protocol
+
+--> Set HTTP headers --> res.set()
